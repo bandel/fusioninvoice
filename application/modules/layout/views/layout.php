@@ -1,87 +1,85 @@
 <!doctype html>
-
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
+  <meta charset="utf-8">
 
-		<!-- Use the .htaccess and remove these lines to avoid edge case issues -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>FusionInvoice</title>
-		<meta name="description" content="">
-		<meta name="author" content="William G. Rivera">
+  <title>FusionInvoice</title>
+  <meta name="description" content="">
+  <meta name="author" content="William G. Rivera">
 
-		<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/default/css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/default/css/style.css">
+  
+  <script src="<?php echo base_url(); ?>assets/default/js/libs/modernizr-2.0.6.js"></script>
+  <script src="<?php echo base_url(); ?>assets/default/js/libs/jquery-1.7.1.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/default/js/libs/jquery-ui-1.10.3.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/default/js/libs/bootstrap.min.js"></script>
 
-		<script src="<?php echo base_url(); ?>assets/default/js/libs/modernizr-2.0.6.js"></script>
-		<script src="<?php echo base_url(); ?>assets/default/js/libs/jquery-1.7.1.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/default/js/libs/jquery-ui-1.10.3.min.js"></script>
-		<script src="<?php echo base_url(); ?>assets/default/js/libs/bootstrap.min.js"></script>
-
-        <script type="text/javascript">
-
-            $(function()
-            {
-                $('.nav-tabs').tab();
-                $('.tip').tooltip();
+  <script type="text/javascript">
+    $(function()
+    {
+      $('.nav-tabs').tab();
+      $('.tip').tooltip();
 				
-                $('.datepicker').datepicker({ format: '<?php echo date_format_datepicker(); ?>'});
+      $('.datepicker').datepicker({ format: '<?php echo date_format_datepicker(); ?>'});
 		
-                $('.create-invoice').click(function() {
-                    $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_create_invoice'); ?>");
-                });
+      $('.create-invoice').click(function() {
+      $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_create_invoice'); ?>");
+      });
 				
-                $('.create-quote').click(function() {
-                    $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_create_quote'); ?>");
-                });
+      $('.create-quote').click(function() {
+      $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_create_quote'); ?>");
+      });
 				
-                $('#btn_quote_to_invoice').click(function() {
-                    quote_id = $(this).data('quote-id');
-                    $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_quote_to_invoice'); ?>/" + quote_id);
-                });
+      $('#btn_quote_to_invoice').click(function() {
+      quote_id = $(this).data('quote-id');
+      $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_quote_to_invoice'); ?>/" + quote_id);
+      });
 				
-                $('#btn_copy_invoice').click(function() {
-                    invoice_id = $(this).data('invoice-id');
-                    $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_copy_invoice'); ?>", {invoice_id: invoice_id});
-                });
+      $('#btn_copy_invoice').click(function() {
+      invoice_id = $(this).data('invoice-id');
+      $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_copy_invoice'); ?>", {invoice_id: invoice_id});
+      });
                 
-                $('#btn_copy_quote').click(function() {
-                    quote_id = $(this).data('quote-id');
-                    $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_copy_quote'); ?>", {quote_id: quote_id});
-                });
+      $('#btn_copy_quote').click(function() {
+      quote_id = $(this).data('quote-id');
+      $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_copy_quote'); ?>", {quote_id: quote_id});
+      });
                 
-                $('.client-create-invoice').click(function() {
-                    $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_create_invoice'); ?>", {
-                        client_name: $(this).data('client-name')
-                    });
-                });
-                $('.client-create-quote').click(function() {
-                    $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_create_quote'); ?>", {
-                        client_name: $(this).data('client-name')
-                    });
-                });
-				$(document).on('click', '.invoice-add-payment', function() {
-                    invoice_id = $(this).data('invoice-id');
-                    invoice_balance = $(this).data('invoice-balance');
-                    $('#modal-placeholder').load("<?php echo site_url('payments/ajax/modal_add_payment'); ?>", {invoice_id: invoice_id, invoice_balance: invoice_balance });
-                });
+      $('.client-create-invoice').click(function() {
+      $('#modal-placeholder').load("<?php echo site_url('invoices/ajax/modal_create_invoice'); ?>", {
+      client_name: $(this).data('client-name')
+      });
+      });
+      $('.client-create-quote').click(function() {
+      $('#modal-placeholder').load("<?php echo site_url('quotes/ajax/modal_create_quote'); ?>", {
+      client_name: $(this).data('client-name')
+      });
+      });
+      $(document).on('click', '.invoice-add-payment', function() {
+      invoice_id = $(this).data('invoice-id');
+      invoice_balance = $(this).data('invoice-balance');
+      $('#modal-placeholder').load("<?php echo site_url('payments/ajax/modal_add_payment'); ?>", {invoice_id: invoice_id, invoice_balance: invoice_balance });
+      });
 
-            });
+      });
 
-        </script>
+  </script>
 
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
 
 			<div class="navbar-inner">
 
@@ -143,27 +141,31 @@
 					<?php } ?>
 
 					<ul class="nav pull-right settings">
-                        <li><a href="#"><?php echo lang('welcome') . ' ' . $this->session->userdata('user_name'); ?></a></li>
-                        <li class="divider-vertical"></li>
                         <li><a href="http://docs.fusioninvoice.com/1.3/" target="_blank" class="tip icon" data-original-title="Documentation" data-placement="bottom"><i class="icon-question-sign"></i></a></li>
 						<li class="divider-vertical"></li>
 						<li class="dropdown">
 							<a href="#" class="tip icon dropdown-toggle" data-toggle="dropdown" data-original-title="<?php echo lang('settings'); ?>" data-placement="bottom"><i class="icon-cog"></i></a>
 							<ul class="dropdown-menu">
                                 <li><?php echo anchor('custom_fields/index', lang('custom_fields')); ?></li>
-								<li><?php echo anchor('email_templates/index', lang('email_templates')); ?></li>
+				<li><?php echo anchor('email_templates/index', lang('email_templates')); ?></li>
                                 <li><?php echo anchor('import', lang('import_data')); ?></li>
-								<li><?php echo anchor('invoice_groups/index', lang('invoice_groups')); ?></li>
+				<li><?php echo anchor('invoice_groups/index', lang('invoice_groups')); ?></li>
                                 <li><?php echo anchor('item_lookups/index', lang('item_lookups')); ?></li>
-								<li><?php echo anchor('payment_methods/index', lang('payment_methods')); ?></li>
-								<li><?php echo anchor('tax_rates/index', lang('tax_rates')); ?></li>
-								<li><?php echo anchor('users/index', lang('user_accounts')); ?></li>
+				<li><?php echo anchor('payment_methods/index', lang('payment_methods')); ?></li>
+				<li><?php echo anchor('tax_rates/index', lang('tax_rates')); ?></li>
+				<li><?php echo anchor('users/index', lang('user_accounts')); ?></li>
                                 <li class="divider"></li>
                                 <li><?php echo anchor('settings', lang('system_settings')); ?></li>
 							</ul>
 						</li>
 						<li class="divider-vertical"></li>
-						<li><a href="<?php echo site_url('sessions/logout'); ?>" class="tip icon logout" data-original-title="<?php echo lang('logout'); ?>" data-placement="bottom"><i class="icon-off"></i></a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo lang('welcome') . ' ' . $this->session->userdata('user_name');?></a>
+				<ul class="dropdown-menu">
+					<li><?php echo anchor('users/form/' . $this->session->userdata('user_id'), "Edit Profile"); ?></li>
+					<li class="divider"></li>
+					<li><a href="<?php echo site_url('sessions/logout'); ?>"><?php echo lang('logout'); ?></a></li>
+				</ul>
+			</li>
 					</ul>
 
 				</div>
